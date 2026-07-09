@@ -1,0 +1,52 @@
+{
+  "greek": [
+    {
+      "name": "Hellenic Shipping News",
+      "url": "https://www.hellenicshippingnews.com/feed/",
+      "language": "en"
+    },
+    {
+      "name": "Ναυτεμπορική - Shipping",
+      "url": "https://www.naftemporiki.gr/shipping/feed/",
+      "language": "el"
+    },
+    {
+      "name": "e-Nautilia",
+      "url": "https://e-nautilia.gr/feed/",
+      "language": "el"
+    },
+    {
+      "name": "Newsit - Ναυτιλία",
+      "url": "https://www.newsit.gr/tag/nautilia/feed/",
+      "language": "el"
+    }
+  ],
+  "international": [
+    {
+      "name": "The Maritime Executive",
+      "url": "https://maritime-executive.com/articles.rss",
+      "language": "en"
+    },
+    {
+      "name": "gCaptain",
+      "url": "https://gcaptain.com/feed/",
+      "language": "en"
+    },
+    {
+      "name": "Naval Today",
+      "url": "https://www.navaltoday.com/feed/",
+      "language": "en"
+    },
+    {
+      "name": "Marine Insight - Naval Architecture",
+      "url": "https://www.marineinsight.com/feed/",
+      "language": "en"
+    },
+    {
+      "name": "Splash247",
+      "url": "https://splash247.com/feed/",
+      "language": "en"
+    }
+  ],
+  "notes": "Some feed URLs may shift over time or block automated fetches. Run 'python fetch_and_digest.py --check-feeds' to validate each URL, and swap in the RSS.app-generated or FeedSpot-listed equivalent if one stops responding. Keep a rough balance between the 'greek' and 'international' lists so the site stays half-and-half."
+}

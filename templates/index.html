@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Deck Log &mdash; Naval Architecture &amp; Marine Engineering Digest</title>
+<meta name="description" content="An automatically updated digest of naval architecture, shipbuilding and marine engineering news from Greek and international sources.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="static/style.css">
+</head>
+<body>
+
+<header class="titleblock">
+  <div class="titleblock-inner">
+    <div class="titleblock-mark">&#9875;</div>
+    <div class="titleblock-text">
+      <h1>Deck Log</h1>
+      <p class="tagline">Naval architecture &amp; marine engineering, charted daily</p>
+    </div>
+    <div class="titleblock-meta">
+      <span>SOURCES: GR / INTL</span>
+      <span>UPDATED {{ generated_at }}</span>
+      <span>{{ total_count }} ENTRIES LOGGED</span>
+    </div>
+  </div>
+</header>
+
+<main class="log">
+
+  <section class="column" aria-label="Greek sources">
+    <div class="column-header">
+      <h2>Ελληνικές πηγές</h2>
+      <span class="column-sub">Greek sources</span>
+    </div>
+
+    {% if greek_articles %}
+      {% for a in greek_articles %}
+      <article class="entry">
+        <div class="entry-meta">
+          <span class="entry-no">LOG {{ a.entry_no }}</span>
+          <span class="entry-date">{{ a.date }}</span>
+        </div>
+        <h3 class="entry-title"><a href="{{ a.link }}" target="_blank" rel="noopener">{{ a.title }}</a></h3>
+        <p class="entry-source">{{ a.source }}</p>
+        {% if a.summary_el %}<p class="entry-summary summary-el">{{ a.summary_el }}</p>{% endif %}
+        {% if a.summary_en %}<p class="entry-summary summary-en">{{ a.summary_en }}</p>{% endif %}
+      </article>
+      {% endfor %}
+    {% else %}
+      <p class="empty">No entries yet. Run <code>fetch_and_digest.py</code> to log the first ones.</p>
+    {% endif %}
+  </section>
+
+  <div class="bearing-line" aria-hidden="true"></div>
+
+  <section class="column" aria-label="International sources">
+    <div class="column-header">
+      <h2>International sources</h2>
+      <span class="column-sub">Διεθνείς πηγές</span>
+    </div>
+
+    {% if intl_articles %}
+      {% for a in intl_articles %}
+      <article class="entry">
+        <div class="entry-meta">
+          <span class="entry-no">LOG {{ a.entry_no }}</span>
+          <span class="entry-date">{{ a.date }}</span>
+        </div>
+        <h3 class="entry-title"><a href="{{ a.link }}" target="_blank" rel="noopener">{{ a.title }}</a></h3>
+        <p class="entry-source">{{ a.source }}</p>
+        {% if a.summary_en %}<p class="entry-summary summary-en">{{ a.summary_en }}</p>{% endif %}
+        {% if a.summary_el %}<p class="entry-summary summary-el">{{ a.summary_el }}</p>{% endif %}
+      </article>
+      {% endfor %}
+    {% else %}
+      <p class="empty">No entries yet. Run <code>fetch_and_digest.py</code> to log the first ones.</p>
+    {% endif %}
+  </section>
+
+</main>
+
+<footer class="revision-note">
+  <p>Compiled automatically from RSS feeds &amp; summarized with Claude. Last revision {{ generated_at }}.</p>
+</footer>
+
+</body>
+</html>
