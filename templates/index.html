@@ -38,7 +38,12 @@
 </div>
   </div>
 </header>
-
+     
+<nav class="tabs">
+  <button class="tab-btn active" data-tab="daily" onclick="showTab('daily')">DAILY</button>
+  <button class="tab-btn" data-tab="logs" onclick="showTab('logs')">LOGS</button>
+</nav>
+     
 <main class="log">
 
   <section class="column" aria-label="Greek sources">
@@ -49,7 +54,7 @@
 
     {% if greek_articles %}
       {% for a in greek_articles %}
-      <article class="entry">
+      <article class="entry" data-date="{{ a.date }}">
         <div class="entry-meta">
           <span class="entry-no">LOG {{ a.entry_no }}</span>
           <span class="entry-date">{{ a.date }}</span>
@@ -75,7 +80,7 @@
 
     {% if intl_articles %}
       {% for a in intl_articles %}
-      <article class="entry">
+      <article class="entry" data-date="{{ a.date }}">
         <div class="entry-meta">
           <span class="entry-no">LOG {{ a.entry_no }}</span>
           <span class="entry-date">{{ a.date }}</span>
@@ -98,4 +103,20 @@
 </footer>
 
 </body>
+     <script>
+function todayStr() {
+  const months = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+  const d = new Date();
+  const day = String(d.getDate()).padStart(2, "0");
+  return `${day} ${months[d.getMonth()]} ${d.getFullYear()}`;
+}
+function showTab(tab) {
+  document.querySelectorAll(".tab-btn").forEach(b => b.classList.toggle("active", b.dataset.tab === tab));
+  const today = todayStr();
+  document.querySelectorAll(".entry").forEach(e => {
+    e.style.display = (tab === "logs" || e.dataset.date === today) ? "" : "none";
+  });
+}
+document.addEventListener("DOMContentLoaded", () => showTab("daily"));
+</script>
 </html>
