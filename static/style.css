@@ -27,19 +27,47 @@ a { color: inherit; }
 
 /* Title block, styled like a chart cartouche */
 .titleblock {
-  background: var(--navy);
+  position: relative;
+  overflow: hidden;
+  min-height: 460px;
   color: var(--parchment);
-  border-bottom: 4px double var(--brass);
 }
-
+.titleblock-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+.titleblock-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(16,35,58,0.05) 0%, rgba(16,35,58,0.35) 55%, rgba(16,35,58,0.92) 100%);
+}
+.titleblock-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  min-height: 460px;
+  padding-bottom: 20px;
+}
 .titleblock-inner {
   max-width: 1100px;
   margin: 0 auto;
-  padding: 28px 24px;
+  width: 100%;
+  padding: 0 24px;
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   gap: 20px;
   flex-wrap: wrap;
+}
+
+@media (max-width: 700px) {
+  .titleblock, .titleblock-content { min-height: 380px; }
+  .titleblock-bg { object-position: left center; }
 }
 
 .titleblock-mark {
@@ -211,8 +239,8 @@ a { color: inherit; }
   display: flex;
   gap: 10px;
   max-width: 1100px;
-  margin: 0 auto;
-  padding: 0 24px 20px;
+  margin: 16px auto 0;
+  padding: 0 24px;
 }
 .tab-btn {
   font-family: var(--font-display);
@@ -234,26 +262,4 @@ a { color: inherit; }
   background: #BFDDF5;
   border-color: #7FB3E0;
   color: #0C447C;
-}
-.hero-banner {
-  width: 100%;
-  overflow: hidden;
-  background: var(--navy);
-}
-.hero-banner-img {
-  display: block;
-  width: 100%;
-  height: auto;
-}
-
-/* on narrow phones, the banner would otherwise shrink to a thin sliver
-   and the anchor would become too small to read — so below 700px we
-   fix a height and crop to the left side (anchor + left knot) instead
-   of scaling the whole thing down */
-@media (max-width: 700px) {
-  .hero-banner-img {
-    height: 190px;
-    object-fit: cover;
-    object-position: left center;
-  }
 }
