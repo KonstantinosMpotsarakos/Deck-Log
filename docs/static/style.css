@@ -49,7 +49,6 @@ a { color: inherit; }
   background: linear-gradient(to bottom, rgba(16,35,58,0) 0%, rgba(16,35,58,0.25) 70%, rgba(16,35,58,0.55) 100%);
 }
 
-/* name / sources / updated block - stacked, top right, clear of the top rope */
 .titleblock-meta {
   position: absolute;
   top: 24%;
@@ -65,7 +64,7 @@ a { color: inherit; }
   color: #9FB0BE;
   text-transform: uppercase;
 }
-/* title + tagline + tabs - bottom left, clear of the anchor and bottom rope */
+
 .titleblock-content {
   position: absolute;
   left: 0;
@@ -131,9 +130,21 @@ a { color: inherit; }
   color: #0C447C;
 }
 
+/* ---- mobile: swap to the dedicated mobile banner image and its own layout ---- */
 @media (max-width: 700px) {
+  .titleblock {
+    aspect-ratio: 802 / 401;
+  }
+  .titleblock-meta {
+    top: 8%;
+    right: 6%;
+    font-size: 8px;
+  }
+  .titleblock-content {
+    bottom: 10%;
+  }
   .titleblock-inner, .tabs {
-    padding-left: 12%;
+    padding-left: 26%;
   }
 }
 
