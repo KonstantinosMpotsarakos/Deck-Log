@@ -136,10 +136,6 @@ a { color: inherit; }
   .titleblock-inner, .tabs {
     padding-left: 12%;
   }
-  .titleblock-meta {
-    top: 5%;
-    right: 5%;
-  }
 }
 
 /* ============ MAIN LOG: two-column layout ============ */
