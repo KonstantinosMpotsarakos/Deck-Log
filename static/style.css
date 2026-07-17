@@ -90,13 +90,12 @@ a { color: inherit; }
 
 .titleblock-text h1 {
   font-family: 'Times New Roman', Times, Georgia, serif;
-  font-weight: 700;
-  font-size: clamp(18px, 3.2vw, 40px);
+  font-weight: 400;
+  font-size: clamp(22px, 4.2vw, 52px);
   margin: 0;
   letter-spacing: 0.01em;
   color: var(--parchment);
 }
-
 .tagline {
   margin: 4px 0 0;
   font-family: var(--font-mono);
