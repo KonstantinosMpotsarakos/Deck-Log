@@ -299,3 +299,23 @@ a { color: inherit; }
 .log.solo {
   grid-template-columns: 1fr;
 }
+.search-bar {
+  max-width: 1100px;
+  margin: 24px auto 0;
+  padding: 0 24px;
+}
+.search-bar input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 12px 16px;
+  font-family: var(--font-mono);
+  font-size: 14px;
+  border: 1px solid var(--ink);
+  border-radius: 6px;
+  background: #fff;
+  color: var(--ink);
+}
+.search-bar input:focus {
+  outline: 2px solid var(--brass);
+  outline-offset: 1px;
+}

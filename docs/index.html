@@ -33,7 +33,7 @@
   <div class="titleblock-meta">
     <span>BY ΚΩΝΣΤΑΝΤΙΝΟΣ ΜΠΟΤΣΑΡΑΚΟΣ</span>
     <span>SOURCES: GR / INTL</span>
-    <span>UPDATED 17 Jul 2026, 04:11 UTC</span>
+    <span>UPDATED 17 Jul 2026, 04:30 UTC</span>
     <span>120 ENTRIES LOGGED</span>
   </div>
 
@@ -50,6 +50,9 @@
     </nav>
   </div>
 </header>
+     <div class="search-bar">
+  <input type="text" id="searchInput" placeholder="Search articles..." oninput="filterSearch()">
+</div>
 
 <main class="log">
 
@@ -1399,10 +1402,24 @@
 </main>
 
 <footer class="revision-note">
-  <p>Compiled automatically from RSS feeds &amp; summarized with Claude. Last revision 17 Jul 2026, 04:11 UTC.</p>
+  <p>Compiled automatically from RSS feeds &amp; summarized with Claude. Last revision 17 Jul 2026, 04:30 UTC.</p>
 </footer>
 
 <script>
+     function filterSearch() {
+  const query = document.getElementById('searchInput').value.toLowerCase();
+  document.querySelectorAll('.entry').forEach(e => {
+    const text = e.textContent.toLowerCase();
+    const matchesSearch = text.includes(query);
+    e.dataset.searchHidden = matchesSearch ? '' : 'true';
+    applyVisibility(e);
+  });
+}
+function applyVisibility(e) {
+  const hiddenBySearch = e.dataset.searchHidden === 'true';
+  const hiddenByTab = e.dataset.tabHidden === 'true';
+  e.style.display = (hiddenBySearch || hiddenByTab) ? 'none' : '';
+}
      function toggleColumn(which) {
   const log = document.querySelector('.log');
   const current = log.dataset.filter || 'both';
@@ -1424,7 +1441,9 @@ function showTab(tab) {
   document.querySelectorAll(".tab-btn").forEach(b => b.classList.toggle("active", b.dataset.tab === tab));
   const latest = mostRecentDate();
   document.querySelectorAll(".entry").forEach(e => {
-    e.style.display = (tab === "logs" || e.dataset.date === latest) ? "" : "none";
+    const show = (tab === "logs" || e.dataset.date === latest);
+    e.dataset.tabHidden = show ? '' : 'true';
+    applyVisibility(e);
   });
 }
 document.addEventListener("DOMContentLoaded", () => showTab("daily"));
