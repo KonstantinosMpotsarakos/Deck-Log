@@ -112,21 +112,21 @@ a { color: inherit; }
   letter-spacing: 0.04em;
   text-transform: uppercase;
   background: transparent;
-  border: 1px solid #4A6B85;
-  color: #9FB0BE;
+  border: 1px solid #607179;
+  color: #ABB4B8;
   padding: 10px 28px;
   border-radius: 6px;
   cursor: pointer;
 }
 
 .tab-btn:hover {
-  border-color: #9FB0BE;
+  border-color: #ABB4B8;
 }
 
 .tab-btn.active {
-  background: #BFDDF5;
-  border-color: #7FB3E0;
-  color: #0C447C;
+  background: #C4D3D3;
+  border-color: #3A5862;
+  color: #0C2A32;
 }
 
 /* ---- mobile: swap to the dedicated mobile banner image and its own layout ---- */
